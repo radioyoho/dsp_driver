@@ -47,7 +47,7 @@ int main(void) {
 			GPIO_setPIN(GPIO_B, BIT22);
 		}
 
-		}
+	}
 
     return 0 ;
 }

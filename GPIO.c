@@ -215,19 +215,19 @@ void GPIO_setPIN(GPIO_portNameType portName, uint8 pin)
 {
 	switch (portName) {
 		case GPIO_A:
-			GPIOA->PSOR = pin;
+			GPIOA->PSOR |= 1 << pin;
 			break;
 		case GPIO_B:
-			GPIOB->PSOR = pin;
+			GPIOB->PSOR |= 1 << pin;
 			break;
 		case GPIO_C:
-			GPIOC->PSOR = pin;
+			GPIOC->PSOR |= 1 << pin;
 			break;
 		case GPIO_D:
-			GPIOD->PSOR = pin;
+			GPIOD->PSOR |= 1 << pin;
 			break;
 		case GPIO_E:
-			GPIOE->PSOR = pin;
+			GPIOE->PSOR |= 1 << pin;
 			break;
 		default:
 			break;
@@ -237,19 +237,19 @@ void GPIO_clearPIN(GPIO_portNameType portName, uint8 pin)
 {
 	switch (portName) {
 		case GPIO_A:
-			GPIOA->PCOR = pin;
+			GPIOA->PCOR |= 1 << pin;
 			break;
 		case GPIO_B:
-			GPIOB->PCOR = pin;
+			GPIOB->PCOR |= 1 << pin;
 			break;
 		case GPIO_C:
-			GPIOC->PCOR = pin;
+			GPIOC->PCOR |= 1 << pin;
 			break;
 		case GPIO_D:
-			GPIOD->PCOR = pin;
+			GPIOD->PCOR |= 1 << pin;
 			break;
 		case GPIO_E:
-			GPIOE->PCOR = pin;
+			GPIOE->PCOR |= 1 << pin;
 			break;
 		default:
 			break;
@@ -259,19 +259,19 @@ void GPIO_tooglePIN(GPIO_portNameType portName, uint8 pin)
 {
 	switch (portName) {
 		case GPIO_A:
-			GPIOA->PTOR = pin;
+			GPIOA->PTOR |= 1 << pin;
 			break;
 		case GPIO_B:
-			GPIOB->PTOR = pin;
+			GPIOB->PTOR |= 1 << pin;
 			break;
 		case GPIO_C:
-			GPIOC->PTOR = pin;
+			GPIOC->PTOR |= 1 << pin;
 			break;
 		case GPIO_D:
-			GPIOD->PTOR = pin;
+			GPIOD->PTOR |= 1 << pin;
 			break;
 		case GPIO_E:
-			GPIOE->PTOR = pin;
+			GPIOE->PTOR |= 1 << pin;
 			break;
 		default:
 			break;
