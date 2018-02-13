@@ -192,19 +192,19 @@ uint8 GPIO_readPIN(GPIO_portNameType portName, uint8 pin)
 {
 	switch (portName) {
 		case GPIO_A:
-			return(GPIOA->PDIR[pin]);
+			return (GPIOA->PDIR >> pin) & 0x01;
 			break;
 		case GPIO_B:
-			return(GPIOB->PDIR[pin]);
+			return (GPIOB->PDIR >> pin) & 0x01;
 			break;
 		case GPIO_C:
-			return(GPIOC->PDIR[pin]);
+			return (GPIOC->PDIR >> pin) & 0x01;
 			break;
 		case GPIO_D:
-			return(GPIOD->PDIR[pin]);
+			return (GPIOD->PDIR >> pin) & 0x01;
 			break;
 		case GPIO_E:
-			return(GPIOE->PDIR[pin]);
+			return (GPIOE->PDIR >> pin) & 0x01;
 			break;
 		default:
 			break;
@@ -215,19 +215,19 @@ void GPIO_setPIN(GPIO_portNameType portName, uint8 pin)
 {
 	switch (portName) {
 		case GPIO_A:
-			GPIOA->PSOR[pin];
+			GPIOA->PSOR = pin;
 			break;
 		case GPIO_B:
-			GPIOB->PSOR[pin];
+			GPIOB->PSOR = pin;
 			break;
 		case GPIO_C:
-			GPIOC->PSOR[pin];
+			GPIOC->PSOR = pin;
 			break;
 		case GPIO_D:
-			GPIOD->PSOR[pin];
+			GPIOD->PSOR = pin;
 			break;
 		case GPIO_E:
-			GPIOE->PSOR[pin];
+			GPIOE->PSOR = pin;
 			break;
 		default:
 			break;
@@ -237,19 +237,19 @@ void GPIO_clearPIN(GPIO_portNameType portName, uint8 pin)
 {
 	switch (portName) {
 		case GPIO_A:
-			GPIOA->PSOR[pin];
+			GPIOA->PCOR = pin;
 			break;
 		case GPIO_B:
-			GPIOB->PSOR[pin];
+			GPIOB->PCOR = pin;
 			break;
 		case GPIO_C:
-			GPIOC->PSOR[pin];
+			GPIOC->PCOR = pin;
 			break;
 		case GPIO_D:
-			GPIOD->PSOR[pin];
+			GPIOD->PCOR = pin;
 			break;
 		case GPIO_E:
-			GPIOE->PSOR[pin];
+			GPIOE->PCOR = pin;
 			break;
 		default:
 			break;
@@ -259,27 +259,28 @@ void GPIO_tooglePIN(GPIO_portNameType portName, uint8 pin)
 {
 	switch (portName) {
 		case GPIO_A:
-			GPIOA->PTOR[pin];
+			GPIOA->PTOR = pin;
 			break;
 		case GPIO_B:
-			GPIOB->PTOR[pin];
+			GPIOB->PTOR = pin;
 			break;
 		case GPIO_C:
-			GPIOC->PTOR[pin];
+			GPIOC->PTOR = pin;
 			break;
 		case GPIO_D:
-			GPIOD->PTOR[pin];
+			GPIOD->PTOR = pin;
 			break;
 		case GPIO_E:
-			GPIOE->PTOR[pin];
+			GPIOE->PTOR = pin;
 			break;
 		default:
 			break;
 	}
 }
-void GPIO_dataDirectionPORT(GPIO_portNameType portName ,uint32 direction);
+void GPIO_dataDirectionPORT(GPIO_portNameType portName ,uint32 direction)
+{
+
+}
 void GPIO_dataDirectionPIN(GPIO_portNameType portName, uint8 State, uint8 pin);
-
-
 
 
