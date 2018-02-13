@@ -279,8 +279,47 @@ void GPIO_tooglePIN(GPIO_portNameType portName, uint8 pin)
 }
 void GPIO_dataDirectionPORT(GPIO_portNameType portName ,uint32 direction)
 {
-
+	switch (portName) {
+		case GPIO_A:
+			GPIOA->PDDR = direction;
+			break;
+		case GPIO_B:
+			GPIOB->PDDR = direction;
+			break;
+		case GPIO_C:
+			GPIOC->PDDR = direction;
+			break;
+		case GPIO_D:
+			GPIOD->PDDR = direction;
+			break;
+		case GPIO_E:
+			GPIOE->PDDR = direction;
+			break;
+		default:
+			break;
+	}
 }
-void GPIO_dataDirectionPIN(GPIO_portNameType portName, uint8 State, uint8 pin);
+void GPIO_dataDirectionPIN(GPIO_portNameType portName, uint8 State, uint8 pin)
+{
+	switch (portName) {
+		case GPIO_A:
+			GPIOA->PDDR |= (State << pin);
+			break;
+		case GPIO_B:
+			GPIOB->PDDR |= (State << pin);
+			break;
+		case GPIO_C:
+			GPIOC->PDDR |= (State << pin);
+			break;
+		case GPIO_D:
+			GPIOD->PDDR |= (State << pin);
+			break;
+		case GPIO_E:
+			GPIOE->PDDR |= (State << pin);
+			break;
+		default:
+			break;
+	}
+}
 
 
