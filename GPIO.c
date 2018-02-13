@@ -255,7 +255,28 @@ void GPIO_clearPIN(GPIO_portNameType portName, uint8 pin)
 			break;
 	}
 }
-void GPIO_tooglePIN(GPIO_portNameType portName, uint8 pin);
+void GPIO_tooglePIN(GPIO_portNameType portName, uint8 pin)
+{
+	switch (portName) {
+		case GPIO_A:
+			GPIOA->PTOR[pin];
+			break;
+		case GPIO_B:
+			GPIOB->PTOR[pin];
+			break;
+		case GPIO_C:
+			GPIOC->PTOR[pin];
+			break;
+		case GPIO_D:
+			GPIOD->PTOR[pin];
+			break;
+		case GPIO_E:
+			GPIOE->PTOR[pin];
+			break;
+		default:
+			break;
+	}
+}
 void GPIO_dataDirectionPORT(GPIO_portNameType portName ,uint32 direction);
 void GPIO_dataDirectionPIN(GPIO_portNameType portName, uint8 State, uint8 pin);
 
