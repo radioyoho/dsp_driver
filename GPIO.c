@@ -145,74 +145,116 @@ uint8 GPIO_pinControlRegister(GPIO_portNameType portName,uint8 pin,const GPIO_pi
 void GPIO_writePORT(GPIO_portNameType portName, uint32 Data )
 {
 	switch(portName)/** Selecting the GPIO for clock enabling*/
-		{
-			case GPIO_A: /** GPIO A is selected*/
-				GPIOA->PDOR = Data;
-				break;
-			case GPIO_B: /** GPIO B is selected*/
-				GPIOB->PDOR = Data;
-				break;
-			case GPIO_C: /** GPIO C is selected*/
-				GPIOC->PDOR = Data;
-				break;
-			case GPIO_D: /** GPIO D is selected*/
-				GPIOD->PDOR = Data;
-				break;
-			case GPIO_E: /** GPIO E is selected*/
-				GPIOE->PDOR = Data;
-				break;
-			default:
-				break;
-		}// end switch
+	{
+		case GPIO_A: /** GPIO A is selected*/
+			GPIOA->PDOR = Data;
+			break;
+		case GPIO_B: /** GPIO B is selected*/
+			GPIOB->PDOR = Data;
+			break;
+		case GPIO_C: /** GPIO C is selected*/
+			GPIOC->PDOR = Data;
+			break;
+		case GPIO_D: /** GPIO D is selected*/
+			GPIOD->PDOR = Data;
+			break;
+		case GPIO_E: /** GPIO E is selected*/
+			GPIOE->PDOR = Data;
+			break;
+		default:
+			break;
+	}// end switch
 }
 uint32 GPIO_readPORT(GPIO_portNameType portName)
 {
 	switch (portName) {
-			case GPIO_A:
-				return(GPIOA->PDIR);
-				break;
-			case GPIO_B:
-				return(GPIOA->PDIR);
-				break;
-			case GPIO_C:
-				return(GPIOA->PDIR);
-				break;
-			case GPIO_D:
-				return(GPIOA->PDIR);
-				break;
-			case GPIO_E:
-				return(GPIOA->PDIR);
-				break;
-			default:
-				break;
-		}
+		case GPIO_A:
+			return(GPIOA->PDIR);
+			break;
+		case GPIO_B:
+			return(GPIOB->PDIR);
+			break;
+		case GPIO_C:
+			return(GPIOC->PDIR);
+			break;
+		case GPIO_D:
+			return(GPIOD->PDIR);
+			break;
+		case GPIO_E:
+			return(GPIOE->PDIR);
+			break;
+		default:
+			break;
+	}
 	return ERROR;
 }
 uint8 GPIO_readPIN(GPIO_portNameType portName, uint8 pin)
 {
 	switch (portName) {
-				case GPIO_A:
-					return(GPIOA->PDIR[pin]);
-					break;
-				case GPIO_B:
-					return(GPIOA->PDIR[pin]);
-					break;
-				case GPIO_C:
-					return(GPIOA->PDIR[pin]);
-					break;
-				case GPIO_D:
-					return(GPIOA->PDIR[pin]);
-					break;
-				case GPIO_E:
-					return(GPIOA->PDIR[pin]);
-					break;
-				default:
-					break;
-			}
-		return ERROR;
+		case GPIO_A:
+			return(GPIOA->PDIR[pin]);
+			break;
+		case GPIO_B:
+			return(GPIOB->PDIR[pin]);
+			break;
+		case GPIO_C:
+			return(GPIOC->PDIR[pin]);
+			break;
+		case GPIO_D:
+			return(GPIOD->PDIR[pin]);
+			break;
+		case GPIO_E:
+			return(GPIOE->PDIR[pin]);
+			break;
+		default:
+			break;
+	}
+	return ERROR;
 }
-void GPIO_setPIN(GPIO_portNameType portName, uint8 pin);
-void GPIO_clearPIN(GPIO_portNameType portName, uint8 pin);
+void GPIO_setPIN(GPIO_portNameType portName, uint8 pin)
+{
+	switch (portName) {
+		case GPIO_A:
+			GPIOA->PSOR[pin];
+			break;
+		case GPIO_B:
+			GPIOB->PSOR[pin];
+			break;
+		case GPIO_C:
+			GPIOC->PSOR[pin];
+			break;
+		case GPIO_D:
+			GPIOD->PSOR[pin];
+			break;
+		case GPIO_E:
+			GPIOE->PSOR[pin];
+			break;
+		default:
+			break;
+	}
+}
+void GPIO_clearPIN(GPIO_portNameType portName, uint8 pin)
+{
+	switch (portName) {
+		case GPIO_A:
+			GPIOA->PSOR[pin];
+			break;
+		case GPIO_B:
+			GPIOB->PSOR[pin];
+			break;
+		case GPIO_C:
+			GPIOC->PSOR[pin];
+			break;
+		case GPIO_D:
+			GPIOD->PSOR[pin];
+			break;
+		case GPIO_E:
+			GPIOE->PSOR[pin];
+			break;
+		default:
+			break;
+	}
+}
 void GPIO_tooglePIN(GPIO_portNameType portName, uint8 pin);
 void GPIO_dataDirectionPORT(GPIO_portNameType portName ,uint32 direction);
 void GPIO_dataDirectionPIN(GPIO_portNameType portName, uint8 State, uint8 pin);
