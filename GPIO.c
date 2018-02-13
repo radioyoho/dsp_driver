@@ -190,7 +190,26 @@ uint32 GPIO_readPORT(GPIO_portNameType portName)
 }
 uint8 GPIO_readPIN(GPIO_portNameType portName, uint8 pin)
 {
-
+	switch (portName) {
+				case GPIO_A:
+					return(GPIOA->PDIR[pin]);
+					break;
+				case GPIO_B:
+					return(GPIOA->PDIR[pin]);
+					break;
+				case GPIO_C:
+					return(GPIOA->PDIR[pin]);
+					break;
+				case GPIO_D:
+					return(GPIOA->PDIR[pin]);
+					break;
+				case GPIO_E:
+					return(GPIOA->PDIR[pin]);
+					break;
+				default:
+					break;
+			}
+		return ERROR;
 }
 void GPIO_setPIN(GPIO_portNameType portName, uint8 pin);
 void GPIO_clearPIN(GPIO_portNameType portName, uint8 pin);
