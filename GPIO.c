@@ -303,18 +303,23 @@ void GPIO_dataDirectionPIN(GPIO_portNameType portName, uint8 State, uint8 pin)
 {
 	switch (portName) {
 		case GPIO_A:
+			GPIOA->PDDR &= ~(1 << pin);
 			GPIOA->PDDR |= (State << pin);
 			break;
 		case GPIO_B:
+			GPIOA->PDDR &= ~(1 << pin);
 			GPIOB->PDDR |= (State << pin);
 			break;
 		case GPIO_C:
+			GPIOA->PDDR &= ~(1 << pin);
 			GPIOC->PDDR |= (State << pin);
 			break;
 		case GPIO_D:
+			GPIOA->PDDR &= ~(1 << pin);
 			GPIOD->PDDR |= (State << pin);
 			break;
 		case GPIO_E:
+			GPIOA->PDDR &= ~(1 << pin);
 			GPIOE->PDDR |= (State << pin);
 			break;
 		default:
