@@ -11,6 +11,7 @@
  */
 #include "MK64F12.h"
 #include "GPIO.h"
+#define MASK 1
 
 GPIO_interruptFlags_t GPIO_intrStatusFlag;
 
@@ -192,19 +193,19 @@ uint8 GPIO_readPIN(GPIO_portNameType portName, uint8 pin)
 {
 	switch (portName) {
 		case GPIO_A:
-			return (GPIOA->PDIR >> pin) & 0x01;
+			return (GPIOA->PDIR >> pin) & MASK;
 			break;
 		case GPIO_B:
-			return (GPIOB->PDIR >> pin) & 0x01;
+			return (GPIOB->PDIR >> pin) & MASK;
 			break;
 		case GPIO_C:
-			return (GPIOC->PDIR >> pin) & 0x01;
+			return (GPIOC->PDIR >> pin) & MASK;
 			break;
 		case GPIO_D:
-			return (GPIOD->PDIR >> pin) & 0x01;
+			return (GPIOD->PDIR >> pin) & MASK;
 			break;
 		case GPIO_E:
-			return (GPIOE->PDIR >> pin) & 0x01;
+			return (GPIOE->PDIR >> pin) & MASK;
 			break;
 		default:
 			break;
@@ -215,19 +216,19 @@ void GPIO_setPIN(GPIO_portNameType portName, uint8 pin)
 {
 	switch (portName) {
 		case GPIO_A:
-			GPIOA->PSOR |= 1 << pin;
+			GPIOA->PSOR |= TRUE << pin;
 			break;
 		case GPIO_B:
-			GPIOB->PSOR |= 1 << pin;
+			GPIOB->PSOR |= TRUE << pin;
 			break;
 		case GPIO_C:
-			GPIOC->PSOR |= 1 << pin;
+			GPIOC->PSOR |= TRUE << pin;
 			break;
 		case GPIO_D:
-			GPIOD->PSOR |= 1 << pin;
+			GPIOD->PSOR |= TRUE << pin;
 			break;
 		case GPIO_E:
-			GPIOE->PSOR |= 1 << pin;
+			GPIOE->PSOR |= TRUE << pin;
 			break;
 		default:
 			break;
@@ -237,19 +238,19 @@ void GPIO_clearPIN(GPIO_portNameType portName, uint8 pin)
 {
 	switch (portName) {
 		case GPIO_A:
-			GPIOA->PCOR |= 1 << pin;
+			GPIOA->PCOR |= TRUE << pin;
 			break;
 		case GPIO_B:
-			GPIOB->PCOR |= 1 << pin;
+			GPIOB->PCOR |= TRUE << pin;
 			break;
 		case GPIO_C:
-			GPIOC->PCOR |= 1 << pin;
+			GPIOC->PCOR |= TRUE << pin;
 			break;
 		case GPIO_D:
-			GPIOD->PCOR |= 1 << pin;
+			GPIOD->PCOR |= TRUE << pin;
 			break;
 		case GPIO_E:
-			GPIOE->PCOR |= 1 << pin;
+			GPIOE->PCOR |= TRUE << pin;
 			break;
 		default:
 			break;
@@ -259,19 +260,19 @@ void GPIO_tooglePIN(GPIO_portNameType portName, uint8 pin)
 {
 	switch (portName) {
 		case GPIO_A:
-			GPIOA->PTOR |= 1 << pin;
+			GPIOA->PTOR |= TRUE << pin;
 			break;
 		case GPIO_B:
-			GPIOB->PTOR |= 1 << pin;
+			GPIOB->PTOR |= TRUE << pin;
 			break;
 		case GPIO_C:
-			GPIOC->PTOR |= 1 << pin;
+			GPIOC->PTOR |= TRUE << pin;
 			break;
 		case GPIO_D:
-			GPIOD->PTOR |= 1 << pin;
+			GPIOD->PTOR |= TRUE << pin;
 			break;
 		case GPIO_E:
-			GPIOE->PTOR |= 1 << pin;
+			GPIOE->PTOR |= TRUE << pin;
 			break;
 		default:
 			break;
@@ -303,23 +304,23 @@ void GPIO_dataDirectionPIN(GPIO_portNameType portName, uint8 State, uint8 pin)
 {
 	switch (portName) {
 		case GPIO_A:
-			GPIOA->PDDR &= ~(1 << pin);
+			GPIOA->PDDR &= ~(MASK << pin);
 			GPIOA->PDDR |= (State << pin);
 			break;
 		case GPIO_B:
-			GPIOA->PDDR &= ~(1 << pin);
+			GPIOA->PDDR &= ~(MASK << pin);
 			GPIOB->PDDR |= (State << pin);
 			break;
 		case GPIO_C:
-			GPIOA->PDDR &= ~(1 << pin);
+			GPIOA->PDDR &= ~(MASK << pin);
 			GPIOC->PDDR |= (State << pin);
 			break;
 		case GPIO_D:
-			GPIOA->PDDR &= ~(1 << pin);
+			GPIOA->PDDR &= ~(MASK << pin);
 			GPIOD->PDDR |= (State << pin);
 			break;
 		case GPIO_E:
-			GPIOA->PDDR &= ~(1 << pin);
+			GPIOA->PDDR &= ~(MASK << pin);
 			GPIOE->PDDR |= (State << pin);
 			break;
 		default:
